@@ -1,2 +1,0 @@
-# Cloud.ru
-# Cloud.ru
