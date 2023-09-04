@@ -5,7 +5,7 @@
     password: "{{ 'cloudpass' | password_hash('sha512') }}"
     sshkey: "{{ lookup('file', '../key/key.pub') }}"
   tasks:
-  - name: "Create new user with password"
+  - name: "Create new user and password"
     user:
       name: "{{ user }}"
       password: "{{ password | password_hash('sha512') }}" 
@@ -22,7 +22,7 @@
 
   - name: "Enable ssh key authentication on the host"
     lineinfile:
-      dest: /etc/ssh/sshd_config
+      path: /etc/ssh/sshd_config
       regexp: '^PasswordAuthentication'
       line: "PasswordAuthentication no"
       state: present
